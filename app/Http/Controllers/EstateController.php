@@ -40,7 +40,9 @@ class EstateController extends Controller
     public function getOne($id)
     {
         $estate = Estate::find($id);
-        return response()->json($estate, 200);
+        $return = $estate->toArray();
+        $return['landlords'] = $estate->users()->get();
+        return response()->json($return, 200);
     }
 
     public function edit(UpdateEstateRequest $request)

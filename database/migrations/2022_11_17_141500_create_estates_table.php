@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('name');
             $table->integer('number');
             $table->string('street');
-            $table->integer('postcode');
+            $table->string('postcode');
             $table->string('city');
             $table->float('surface');
             $table->string('amount');
