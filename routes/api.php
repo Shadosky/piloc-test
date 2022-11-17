@@ -37,8 +37,13 @@ Route::prefix('admin')->group(function () {
         Route::put('users', 'edit');
         Route::delete('users/{id}', 'delete');
     });
+
+    Route::controller(EstateController::class)->group(function () {
+        Route::post('esates', 'add');
+        Route::get('esates', 'listAll');
+        Route::get('esates/{id}', 'getOne');
+        Route::put('esates', 'edit');
+        Route::delete('esates/{id}', 'delete');
+    });
 });
 
-Route::controller(EstateController::class)->group(function () {
-    Route::get('esates', 'listAll');
-});
