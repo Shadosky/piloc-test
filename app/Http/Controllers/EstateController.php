@@ -24,7 +24,7 @@ class EstateController extends Controller
             'city' => $request->getCity(),
             'surface' => $request->getSurface(),
             'amount' => $request->getAmount(),
-            'statuts' => $request->getStatus()
+            'status' => $request->getStatus()
         ]);
         $estate->users()->attach($request->getUserId());
 

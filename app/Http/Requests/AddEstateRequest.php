@@ -35,7 +35,7 @@ class AddEstateRequest extends FormRequest
             'city' => 'required|string|max:255',
             'surface' => 'required',
             'amount' => 'required',
-            'statuts' => 'required|string|in:rented,available'
+            'status' => 'required|string|in:rented,available'
         ];
     }
 
