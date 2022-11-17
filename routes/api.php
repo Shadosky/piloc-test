@@ -4,7 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\EstateController;
-
+use \App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,6 +27,16 @@ Route::controller(AuthController::class)->group(function () {
     Route::post('logout', 'logout');
     Route::post('refresh', 'refresh');
 
+});
+
+Route::prefix('admin')->group(function () {
+    Route::controller(UserController::class)->group(function () {
+        Route::post('users', 'add');
+        Route::get('users', 'listAll');
+        Route::get('users/{id}', 'getOne');
+        Route::put('users', 'edit');
+        Route::delete('users/{id}', 'delete');
+    });
 });
 
 Route::controller(EstateController::class)->group(function () {

@@ -6,11 +6,11 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use PHPOpenSourceSaver\JWTAuth\Contracts\JWTSubject;
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class User extends Authenticatable implements JWTSubject
 {
-    use HasFactory, Notifiable;
+    use HasFactory, Notifiable, SoftDeletes;
     protected $connection = 'sqlite';
 
     /**
@@ -28,24 +28,27 @@ class User extends Authenticatable implements JWTSubject
     protected $fillable = [
         'id',
         'firstname',
-        'name',
+        'lastname',
         'email',
         'password',
         'admin',
-        'landlord'
+        'landlord',
     ];
 
     /**
      * The attributes that should be hidden for serialization.
      */
     protected $hidden = [
-        'password'
+        'password',
+        'admin',
+        'landlord',
+        'deleted_at'
     ];
 
     /**
      * Les biens de l'utilisateur
      */
-    public function roles()
+    public function estates()
     {
         return $this->belongsToMany(Estate::class, 'users_estates');
     }

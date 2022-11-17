@@ -24,6 +24,7 @@ return new class extends Migration
             $table->string('amount');
             $table->string('status');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

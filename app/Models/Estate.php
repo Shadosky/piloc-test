@@ -3,9 +3,13 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
+
 
 class Estate extends Model
 {
+    use SoftDeletes;
+
     protected $connection = 'sqlite';
 
     /**
@@ -35,7 +39,7 @@ class Estate extends Model
     /**
      * Les proprietaires du bien
      */
-    public function roles()
+    public function users()
     {
         return $this->belongsToMany(User::class, 'users_estates');
     }
