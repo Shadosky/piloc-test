@@ -39,11 +39,11 @@ Route::prefix('admin')->group(function () {
     });
 
     Route::controller(EstateController::class)->group(function () {
-        Route::post('esates', 'add');
-        Route::get('esates', 'listAll');
-        Route::get('esates/{id}', 'getOne');
-        Route::put('esates', 'edit');
-        Route::delete('esates/{id}', 'delete');
+        Route::post('estates', 'add');
+        Route::get('estates', 'listAll');
+        Route::get('estates/{id}', 'getOne');
+        Route::put('estates', 'edit');
+        Route::delete('estates/{id}', 'delete');
     });
 });
 
